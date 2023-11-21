@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+#   google-cloud-sdk:
+#     image: google/cloud-sdk:latest
+#     container_name: gcp
+#     environment:
+#       - PUBSUB_PROJECT_ID=ecm-integration-payment
+#       - PUBSUB_LISTEN_ADDRESS=0.0.0.0:8085
+#     ports:
+#       - "8085:8085"
+#     networks:
+#       - gcp
+#     restart: always
+#     command: >
+#       sh -c "
+#         gcloud config set pass_credentials_to_gsutil false &&
+#         gcloud beta emulators pubsub start --host-port=0.0.0.0:8085 &&
+#         export PUBSUB_EMULATOR_HOST=google-cloud-sdk:8085 &&
+#         sleep infinity"
+
+# Alternativa usando "messagebird" e uma interface gráfica do "echocode" (já pré configurado o projeto, tópico e subscription)
+# O messagebird já utiliza as dependências do "google/cloud-sdk:latest"
+# O emulador estará configurado na porta 8681 e a interface gráfica que manipula informações do Pub/Sub ficará na porta 8680.
+# Podendo ser acessado em http://localhost:8680 assim que o container estiver rodando (UP).
+  pubsub-emulator:
+    image: messagebird/gcloud-pubsub-emulator:latest
+    container_name: pubsub-emulator
+    restart: always
+    ports:
+      - "8681:8681"
+    environment:
+      - PUBSUB_PROJECT1=rbq-food-delivery,rbq-food-invoice:rbq-food-invoice-sub
+
+  pubsub-emulator-ui:
+    image: echocode/gcp-pubsub-emulator-ui:latest
+    container_name: pubsub-emulator-ui
+    restart: always
+    ports:
+      - "8680:8680"
+    environment:
+      - PUBSUB_EMULATOR_HOST=pubsub-emulator:8681
+      - GCP_PROJECT_IDS=rbq-food-delivery
+
+networks:
+  gcp:
+    driver: bridge

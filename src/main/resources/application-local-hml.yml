@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gcp:
+      project-id: rbq-food-delivery
+      pubsub:
+        # Usando credenciais do GCP
+        # https://drive.google.com/file/d/134AhzVoKkPag3tgvj4ClTunwPK6jDAKy/view?usp=drive_link
+        credentials:
+          location: file:C:/Users/mathe/AppData/Roaming/gcloud/rbq-food-delivery-2e02f1537115.json
+
+pubsub:
+  pull-endpoint: projects/rbq-food-delivery/subscriptions/rbq-food-invoice-sub

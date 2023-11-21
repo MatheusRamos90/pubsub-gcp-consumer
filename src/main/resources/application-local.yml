@@ -1,0 +1,16 @@
+server:
+  port: 8081
+
+spring:
+  cloud:
+    gcp:
+      project-id: rbq-food-delivery
+      pubsub:
+        credentials:
+          default-scopes:
+            -
+        emulator-host: localhost:8681
+        topic: rbq-food-invoice
+
+pubsub:
+  pull-endpoint: projects/rbq-food-delivery/subscriptions/rbq-food-invoice-sub
