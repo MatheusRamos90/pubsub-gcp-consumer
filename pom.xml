@@ -14,7 +14,7 @@
 	<name>pubsub-gcp-consumer</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 		<spring-cloud-gcp.version>3.7.4</spring-cloud-gcp.version>
 		<spring-cloud.version>2021.0.8</spring-cloud.version>
 	</properties>
