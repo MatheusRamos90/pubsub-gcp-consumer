@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    gcp:
+      project-id: rbq-food-delivery
+
+pubsub:
+  pull-endpoint: projects/rbq-food-delivery/subscriptions/rbq-food-invoice-sub
