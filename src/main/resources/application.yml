@@ -1,7 +1,7 @@
 spring:
   cloud:
     gcp:
-      project-id: rbq-food-delivery
+      project-id: hml-shared-marketing-infra
 
 pubsub:
-  pull-endpoint: projects/rbq-food-delivery/subscriptions/rbq-food-invoice-sub
+  pull-endpoint: projects/hml-shared-marketing-infra/subscriptions/hml-ecommerce-order-vtex-sub
